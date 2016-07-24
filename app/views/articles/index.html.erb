@@ -1,5 +1,18 @@
-<section
-  ng-controller="articleController"
-  ng-app="">
-      {{2+2}}
-</section>
+<div class="container" ng-app="articles" ng-controller="MainCtrl">
+	<div class="row">
+		<div class="col-md-6">Title</div>
+		<div class="col-md-3">User</div>
+		<div class="col-md-3">Time</div>
+	</div>
+	<div class="row" ng-repeat="result in results">
+	  <div class="col-md-6">
+	  	{{ result.title }}
+	  </div>
+	  <div class="col-md-3">
+	  	{{ result.user }}
+	  </div>
+	 	<div class="col-md-3">
+	  	{{ result.timestamp }}
+	  </div>
+  </div>
+</div>
