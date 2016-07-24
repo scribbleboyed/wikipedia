@@ -8,9 +8,10 @@ app.factory 'articleService', ($http) ->
     $http.get '/api'
  }
 
-app.controller 'MainCtrl', (articleService, $scope) ->
-  articleService.async().then (response) ->
-    $scope.articles = response.data.query.recentchanges
-    return
-  return
+app.controller 'MainCtrl', (articleService, $scope, $interval) ->
+  $interval ( ->
+  	articleService.async().then (response) ->
+    	$scope.articles = response.data.query.recentchanges
+    	return
+  ), 2000
 
