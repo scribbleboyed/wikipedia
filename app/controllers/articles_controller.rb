@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 			list: 'recentchanges',
 			rctype: 'edit',
 			rcprop: 'ids|title|user|timestamp|comment',
-			rclimit: 50,
+			rclimit: 100,
 			redirect: true,
 			format: 'json'
 		}
