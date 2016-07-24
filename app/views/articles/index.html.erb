@@ -1,21 +1,21 @@
-<div class="page-header">
-	<div class="container">
-	  <h1>Wikipedia Articles <small>Sorted by Recent Updates</small></h1>
-	 </div>
-</div>
 <div class="container" ng-app="articles" ng-controller="MainCtrl">
-<button ng-click="stopAutoload()">Autoload: {{ autoload }}</button>
+	<div class="page-header">
+	  <h1>Wikipedia Articles <small>Sorted by Recent Updates</small>
+	  	<button class="btn btn-primary btn-sm" ng-click="toggleAutoload()">Autoload: <span class="autoload-value">{{ autoload }}</span></button>
+	  </h1>
+	  <p>Created by <b>Edward Yeh</b></p>
+	</div>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>User</th>
+        <th>Article Title</th>
+        <th>Edited By</th>
         <th>Updated At</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="article in articles">
-        <td width="50%"><a ng-href="https://en.wikipedia.org/?curid={{ article.pageid }}">{{ article.title }}</a></td>
+        <td class="article-title"><a ng-href="https://en.wikipedia.org/?curid={{ article.pageid }}">{{ article.title }}</a></td>
         <td>{{ article.user }}</td>
         <td>{{ article.timestamp | date: 'medium' }}</td>
       </tr>

@@ -9,16 +9,28 @@ app.factory 'articleService', ($http) ->
  }
 
 app.controller 'MainCtrl', (articleService, $scope, $interval) ->
-  $scope.autoload = true
 
-  $scope.stopAutoload = ->
-  	$scope.autoload = false
-  	$interval.cancel $scope.intervalId
-
-  $scope.intervalId = $interval((->
+  getArticles = ->
     articleService.async().then (response) ->
       $scope.articles = response.data.query.recentchanges
-      return
     return
-  ), 2000)
-  return
+
+  startAutoload = ->
+  	$scope.intervalId = $interval(getArticles, 5000)
+
+  stopAutoload = ->
+  	$interval.cancel $scope.intervalId
+
+  $scope.autoload = true
+
+  $scope.toggleAutoload = ->
+  	if $scope.autoload
+    	$scope.autoload = false
+    	stopAutoload()
+    else
+    	$scope.autoload = true
+    	getArticles()
+    	startAutoload()
+
+  getArticles()
+  startAutoload()
