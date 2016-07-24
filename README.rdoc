@@ -1,28 +1,5 @@
-== README
+This application was created using Rails 4 and AngularJS.  It accesses the Wikipedia REST API (https://www.mediawiki.org/wiki/API:Main_page) and automatically performs queries of the 'RecentChanges' module to provide a continuously synced list of 100 of the most recently updated articles on Wikipedia.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To access this application, clone this repository, run the rails server and navigate your browser to `http://localhost:3000'
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Created by Edward Yeh (edyeh@ucla.edu)
