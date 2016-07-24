@@ -1,16 +1,15 @@
 class ArticlesController < ApplicationController
-  def index
-	  @results = get_recent_changes
+  def api
+  	render json: get_articles
   end
 
-	def get_recent_changes 
+	def get_articles 
 		uri = URI("https://en.wikipedia.org/w/api.php")
 		uri.query = URI.encode_www_form(query_params)
 
 		response = Net::HTTP.get_response(uri)
-		result = JSON.parse(response.body)
-
-		result['query']['recentchanges']
+		
+		JSON.parse(response.body)
 	end
 
 	def query_params
